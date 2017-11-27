@@ -1,0 +1,12 @@
+Package: hpAnnot
+Type: Package
+Title: Anotation package for Hipathia package
+Version: 0.99.0
+Author: Marta R. Hidalgo
+Maintainer: Marta R. Hidalgo <marta.hidalgo@outlook.es>
+Description: Package containing example and annotation data for Hipathia 
+    package. Hipathia depends on this package to be functional. 
+License:  GPL-2
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
