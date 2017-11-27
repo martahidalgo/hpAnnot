@@ -68,7 +68,7 @@
 
 #' Results object
 #'
-#' Results object returned by \code{hipathia} function, after calling
+#' Results object returned by \code{hipathia::hipathia} function, after calling
 #' \code{results <- hipathia(exp.data, pathways, verbose=TRUE)}
 #'
 #' @format Object of results, including pathways information.
@@ -79,6 +79,23 @@
 #'
 "results"
 
+
+#' Wilcoxon comparison of pathways object
+#'
+#' Comparison object returned by \code{hipathia::do.wilcoxon} function, after
+#' calling
+#' \code{comp <- do.wilcoxon(path_vals, sample.group, g1 = "Tumor", g2 =
+#' "Normal")}
+#' \code{path_names <- get.path.names(pathways, rownames(comp))}
+#' \code{comp <- cbind(path_names, comp)}
+#'
+#' @format Table with 1868 rows and 5 columns
+#'
+#' @return Pathway comparison result
+#'
+#' @usage data(comp)
+#'
+"comp"
 
 #' Pathways matrix of the BRCA gene expression dataset
 #'

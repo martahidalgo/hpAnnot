@@ -6,6 +6,7 @@ Author: Marta R. Hidalgo
 Maintainer: Marta R. Hidalgo <marta.hidalgo@outlook.es>
 Description: Package containing example and annotation data for Hipathia 
     package. Hipathia depends on this package to be functional. 
+Depends: R (>= 2.10)
 License:  GPL-2
 Encoding: UTF-8
 LazyData: true
