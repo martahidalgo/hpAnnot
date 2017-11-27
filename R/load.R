@@ -164,8 +164,6 @@ load.unibp <- function(species){
 
 #' Loads GO graph information
 #'
-#' @param species Species of the samples.
-#'
 #' @examples
 #' load.gobp.frame()
 #'
@@ -174,14 +172,13 @@ load.unibp <- function(species){
 #' @export
 #'
 load.gobp.frame <- function(){
-    utils::data("go_bp_frame", envir = environment())
+    gbf <- utils::data("go_bp_frame", envir = environment())
+    go_bp_frame <- get(gbf)
     return(go_bp_frame)
 }
 
 
 #' Loads GO graph
-#'
-#' @param species Species of the samples.
 #'
 #' @examples
 #' load.gobp.net()
@@ -191,7 +188,8 @@ load.gobp.frame <- function(){
 #' @export
 #'
 load.gobp.net <- function(){
-    utils::data("go_bp_net", envir = environment())
+    gbn <- utils::data("go_bp_net", envir = environment())
+    go_bp_net <- get(gbn)
     return(go_bp_net)
 }
 
