@@ -31,7 +31,7 @@ devtools::use_data(go_bp_net, pkg = ".")
 go_bp_annots <- NULL
 for(spe in species){
     gba_folder <- paste0("private/annotations/", spe, "/")
-    gba_file <- paste0(gba_folder, "/go_bp_", spe, "_annots.txt")
+    gba_file <- paste0(gba_folder, "/go_bp_", spe, ".annot")
     go_bp_annot <- read.delim(gba_file,
                               sep = "\t",
                               header = TRUE,

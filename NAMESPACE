@@ -2,10 +2,9 @@
 
 export(is.accepted)
 export(load.annofuns)
+export(load.annots)
 export(load.entrez.hgnc)
-export(load.gobp)
 export(load.gobp.frame)
 export(load.gobp.net)
 export(load.mgi)
-export(load.unibp)
 export(load.xref)

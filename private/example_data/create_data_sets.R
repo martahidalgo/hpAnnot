@@ -2,11 +2,12 @@
 library(hipathia)
 library(devtools)
 
-load("private/data/brca_data.RData")
-load("private/data/brca_design.RData")
+load("private/example_data/brca_data.RData")
+load("private/example_data/brca_design.RData")
 
 # load and filter graphs
-pathways <- load.pathways(species = "hsa")
+pathways <- load.pathways(species = "hsa",
+                          pathways.list = c("hsa03320", "hsa04012"))
 
 # prepare data
 trans_data <- translate.matrix(brca_data, "hsa")

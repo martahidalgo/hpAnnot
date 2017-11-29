@@ -131,8 +131,6 @@ load.entrez.hgnc <- function(species){
 #'
 #' @return GO Annotations
 #'
-#' @export
-#'
 load.gobp <- function(species){
     if(!is.accepted(species))
         stop("Species not accepted")
@@ -151,14 +149,40 @@ load.gobp <- function(species){
 #'
 #' @return Uniprot annotations
 #'
-#' @export
-#'
 load.unibp <- function(species){
     if(!is.accepted(species))
         stop("Species not accepted")
     uba <- utils::data("uni_bp_annots", envir = environment())
     uni_bp_annot <- get(uba)[[species]]
     return(uni_bp_annot)
+}
+
+
+#' Loads functional annotations
+#'
+#' Loads functional annotations from HGNC to the selected database.
+#'
+#' @param db Database to be used. Either "GO" or "uniprot".
+#' @param species Species of the samples.
+#'
+#' @examples
+#' load.annots("GO", "hsa")
+#'
+#' @return Functional annotations from HGNC to the selected database.
+#'
+#' @export
+#'
+load.annots <- function(db, species){
+    if(!is.accepted(species))
+        stop("Species not accepted")
+    if(db == "GO"){
+        annofuns <- load.gobp(species)
+    }else if(db == "uniprot"){
+        annofuns <- load.unibp(species)
+    }else{
+        stop("Database not accepted")
+    }
+    return(annofuns)
 }
 
 
