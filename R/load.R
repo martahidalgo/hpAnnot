@@ -126,9 +126,6 @@ load.entrez.hgnc <- function(species){
 #'
 #' @param species Species of the samples.
 #'
-#' @examples
-#' load.gobp("hsa")
-#'
 #' @return GO Annotations
 #'
 load.gobp <- function(species){
@@ -143,9 +140,6 @@ load.gobp <- function(species){
 #' Loads Uniprot annotations
 #'
 #' @param species Species of the samples.
-#'
-#' @examples
-#' load.unibp("hsa")
 #'
 #' @return Uniprot annotations
 #'
