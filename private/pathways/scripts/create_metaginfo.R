@@ -13,9 +13,6 @@ source(paste0(hipath, "/private/pathways/scripts/graphs.R"))
 source(paste0(hipath, "/private/pathways/scripts/KEGG_net.R"))
 source(paste0(hipath, "/private/pathways/scripts/layout.R"))
 source(paste0(hipath, "/R/load.R"))
-# source(paste0(hipath, "/R/main.R"))
-# source(paste0(hipath, "/R/functions.R"))
-# source(paste0(hipath, "/R/utils.R"))
 
 # Parameters
 species <- c("hsa", "rno", "mmu")
@@ -30,7 +27,7 @@ for(spe in species){
     pathway.names <- unique(gsub(".xml", "", list.files(kgml.folder, pattern="xml")))
 
     # Load annotations
-    dbannot <- load.unibp(spe)
+    dbannot <- load.annots("uniprot", spe)
     entrez2hgnc <- load.entrez.hgnc(spe)
 
 
@@ -44,19 +41,19 @@ for(spe in species){
 
     # Load pathways from created SIF files
     pgs <- load.graphs(sif.folder, spe)
-    save(pgs, file=paste0(tmp.folder, "/pgs.RData"))
+    # save(pgs, file=paste0(tmp.folder, "/pgs.RData"))
 
     # Ammend pathways
     apgs <- amend.kegg.pathways(ammend.file, pgs, spe)
-    save(apgs, file=paste0(tmp.folder, "/apgs.RData"))
+    # save(apgs, file=paste0(tmp.folder, "/apgs.RData"))
 
     # Add final functions to the pathways
     fpgs <- add.functions.to.pathigraphs(apgs, entrez2hgnc, dbannot, maxiter = 1000)
-    save(fpgs, file=paste0(tmp.folder, "/fpgs.RData"))
+    # save(fpgs, file=paste0(tmp.folder, "/fpgs.RData"))
 
     # Compute Path Normalization Values
     metaginfo <- create.metaginfo.object(fpgs)
-    save(metaginfo, file=paste0(tmp.folder, "/meta_graph_info_", spe, ".RData"))
+    # save(metaginfo, file=paste0(tmp.folder, "/meta_graph_info_", spe, ".RData"))
 
 }
 

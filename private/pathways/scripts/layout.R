@@ -277,9 +277,10 @@ add.functions.to.pathigraph <- function(pathigraph, entrez2hgnc, dbannot,
 
   newpathigraph <- pathigraph
 
-  last_node_funcs_list <- get.pathway.functions(pathigraph, dbannot,
-                                                entrez2hgnc,
-                                                use.last.nodes = use.last.nodes)
+  last_node_funcs_list <- hipathia:::get.pathway.functions(pathigraph, dbannot,
+                                                          entrez2hgnc,
+                                                          use.last.nodes =
+                                                              use.last.nodes)
   if(sum(is.na(last_node_funcs_list))>0)
       last_node_funcs_list <- last_node_funcs_list[!is.na(last_node_funcs_list)]
   last_node_funcs <- sapply(last_node_funcs_list,
