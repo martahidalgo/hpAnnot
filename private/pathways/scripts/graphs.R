@@ -295,11 +295,17 @@ create.metaginfo.object <- function(fpgs, basal.value = 0.5){
   pathigraph.genes <- all.needed.genes(fpgs)
 
   # Todos los genes a valor 0.5
-  genes.vals.05 <- matrix(basal.value, ncol=2, nrow=length(pathigraph.genes), dimnames=list(pathigraph.genes))
+  genes.vals.05 <- matrix(basal.value, ncol=2, nrow=length(pathigraph.genes),
+                          dimnames=list(pathigraph.genes))
   meta.05 <- NULL
   meta.05$pathigraphs <- fpgs
   results.05 <- hipathia(genes.vals.05, meta.05)
   results.dec.05 <- hipathia(genes.vals.05, meta.05, decompose = TRUE)
+
+  # Create all.labelids table
+  labelids <- sapply(fpgs, function(pg) cbind(pg$label.id,
+                                              path.id = pg$path.id,
+                                              path.name = pg$path.name))
 
   # Create metaginfo object
   metaginfo <- NULL
@@ -307,6 +313,7 @@ create.metaginfo.object <- function(fpgs, basal.value = 0.5){
   metaginfo[["path.norm"]] <- results.dec.05$all$path.vals[,1]
   metaginfo[["eff.norm"]] <- results.05$all$path.vals[,1]
   metaginfo[["pathigraphs"]] <- fpgs
+  metaginfo[["all.labelids"]] <- do.call("rbind", labelids)
 
   return(metaginfo)
 }

@@ -24,7 +24,8 @@ for(spe in species){
     sif.folder <- paste0(hipath, "/private/pathways/", spe, "/sif/")
     tmp.folder <- paste0(hipath, "/private/pathways/", spe, "/temp/")
     ammend.file <- paste0(hipath, "/private/pathways/sif_amendments.txt")
-    pathway.names <- unique(gsub(".xml", "", list.files(kgml.folder, pattern="xml")))
+    pathway.names <- unique(gsub(".xml", "", list.files(kgml.folder, 
+                                                        pattern="xml")))
 
     # Load annotations
     dbannot <- load.annots("uniprot", spe)
@@ -48,12 +49,14 @@ for(spe in species){
     # save(apgs, file=paste0(tmp.folder, "/apgs.RData"))
 
     # Add final functions to the pathways
-    fpgs <- add.functions.to.pathigraphs(apgs, entrez2hgnc, dbannot, maxiter = 1000)
+    fpgs <- add.functions.to.pathigraphs(apgs, entrez2hgnc, dbannot, 
+                                         maxiter = 1000)
     # save(fpgs, file=paste0(tmp.folder, "/fpgs.RData"))
 
     # Compute Path Normalization Values
     metaginfo <- create.metaginfo.object(fpgs)
-    # save(metaginfo, file=paste0(tmp.folder, "/meta_graph_info_", spe, ".RData"))
+    # save(metaginfo, file=paste0(tmp.folder, "/meta_graph_info_", spe, 
+    #                             ".RData"))
 
 }
 
