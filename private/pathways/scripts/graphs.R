@@ -306,6 +306,8 @@ create.metaginfo.object <- function(fpgs, basal.value = 0.5){
   labelids <- sapply(fpgs, function(pg) cbind(pg$label.id,
                                               path.id = pg$path.id,
                                               path.name = pg$path.name))
+  labelids <- do.call("rbind", labelids)
+  rownames(labelids) <- labelids[,1]
 
   # Create metaginfo object
   metaginfo <- NULL
@@ -313,7 +315,7 @@ create.metaginfo.object <- function(fpgs, basal.value = 0.5){
   metaginfo[["path.norm"]] <- results.dec.05$all$path.vals[,1]
   metaginfo[["eff.norm"]] <- results.05$all$path.vals[,1]
   metaginfo[["pathigraphs"]] <- fpgs
-  metaginfo[["all.labelids"]] <- do.call("rbind", labelids)
+  metaginfo[["all.labelids"]] <- labelids
 
   return(metaginfo)
 }
