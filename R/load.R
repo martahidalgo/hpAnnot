@@ -18,6 +18,10 @@ is.accepted <- function(species){
     return(isacc)
 }
 
+is.accepted.grouping <- function(group){
+    isacc <- group %in% c("uniprot", "GO", "genes")
+    return(isacc)
+}
 
 #' Loads annotations object
 #'
@@ -76,6 +80,70 @@ load.mgi <- function(species){
         mgi <- utils::data("meta_graph_info_mmu", envir = environment())
         meta_graph_info_mmu <- get(mgi)
         return(meta_graph_info_mmu)
+    }else{
+        stop("Species not accepted")
+    }
+}
+
+
+#' Loads object with pseudo graph information
+#'
+#' @param species Species of the samples.
+#'
+#' @examples
+#' load.pseudo("hsa", "uniprot")
+#'
+#' @return Pseudo graph information object
+#'
+#' @export
+#'
+load.pseudo.mgi <- function(species, group.by){
+    if(!is.accepted(species))
+        stop("Species not accepted")
+    if(!is.accepted.grouping(group.by))
+        stop("Grouping not accepted")
+    if(species == "hsa"){
+        if(group.by == "uniprot"){
+            pmgi <- utils::data("pmgi_hsa_uniprot", envir = environment())
+            pmgi_hsa_uniprot <- get(pmgi)
+            return(pmgi_hsa_uniprot)
+        }else if(group.by == "GO"){
+            pmgi <- utils::data("pmgi_hsa_GO", envir = environment())
+            pmgi_hsa_GO <- get(pmgi)
+            return(pmgi_hsa_GO)
+        }else if(group.by == "genes"){
+            pmgi <- utils::data("pmgi_hsa_genes", envir = environment())
+            pmgi_hsa_genes <- get(pmgi)
+            return(pmgi_hsa_genes)
+        }
+    }else if(species == "rno"){
+        if(group.by == "uniprot"){
+            pmgi <- utils::data("pmgi_rno_uniprot", envir = environment())
+            pmgi_rno_uniprot <- get(pmgi)
+            return(pmgi_rno_uniprot)
+        }else if(group.by == "GO"){
+            pmgi <- utils::data("pmgi_rno_GO", envir = environment())
+            pmgi_rno_GO <- get(pmgi)
+            return(pmgi_rno_GO)
+        }else if(group.by == "genes"){
+            pmgi <- utils::data("pmgi_rno_genes", envir = environment())
+            pmgi_rno_genes <- get(pmgi)
+            return(pmgi_rno_genes)
+        }
+    }else if(species == "mmu"){
+        if(group.by == "uniprot"){
+            pmgi <- utils::data("pmgi_mmu_uniprot", envir = environment())
+            pmgi_mmu_uniprot <- get(pmgi)
+            return(pmgi_mmu_uniprot)
+        }else if(group.by == "GO"){
+            pmgi <- utils::data("pmgi_mmu_GO", envir = environment())
+            pmgi_mmu_GO <- get(pmgi)
+            return(pmgi_mmu_GO)
+        }else if(group.by == "genes"){
+            pmgi <- utils::data("pmgi_mmu_genes", envir = environment())
+            pmgi_mmu_genes <- get(pmgi)
+            return(pmgi_mmu_genes)
+        }
     }else{
         stop("Species not accepted")
     }

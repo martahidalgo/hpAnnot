@@ -100,18 +100,6 @@ meta_graph_info_mmu$species <- "mmu"
 devtools::use_data(meta_graph_info_mmu, pkg = ".")
 rm(metaginfo, meta_graph_info_mmu, mgi)
 
-# All together
-# mgi_all <- NULL
-# for(spe in species){
-#     mgi_folder <- paste0("private/pathways/", spe, "/temp/")
-#     mgi_file <- paste0(mgi_folder, "meta_graph_info_", spe, ".RData")
-#     mgi <- load(mgi_file)
-#     metaginfo <- get(mgi)
-#     metaginfo[["species"]] <- spe
-#     mgi_all[[spe]] <- metaginfo
-# }
-# meta_graph_info <- mgi_all
-# devtools::use_data(meta_graph_info, pkg = ".")
 
 
 
@@ -134,5 +122,55 @@ for(spe in species){
 devtools::use_data(annofuns_uniprot, pkg = ".", internal = F)
 
 
+
+# PSEUDO PATHWAYS
+#------------------------
+# HSA
+pmgi <- load("private/pathways/pseudo/pmgi_hsa_genes.RData")
+pmgi_hsa_genes <- get(pmgi)
+devtools::use_data(pmgi_hsa_genes, pkg = ".")
+rm(pmgi_hsa_genes, pmgi)
+
+pmgi <- load("private/pathways/pseudo/pmgi_hsa_uniprot.RData")
+pmgi_hsa_uniprot <- get(pmgi)
+devtools::use_data(pmgi_hsa_uniprot, pkg = ".")
+rm(pmgi_hsa_uniprot, pmgi)
+
+pmgi <- load("private/pathways/pseudo/pmgi_hsa_GO.RData")
+pmgi_hsa_GO <- get(pmgi)
+devtools::use_data(pmgi_hsa_GO, pkg = ".")
+rm(pmgi_hsa_GO, pmgi)
+
+# RNO
+pmgi <- load("private/pathways/pseudo/pmgi_rno_genes.RData")
+pmgi_rno_genes <- get(pmgi)
+devtools::use_data(pmgi_rno_genes, pkg = ".")
+rm(pmgi_rno_genes, pmgi)
+
+pmgi <- load("private/pathways/pseudo/pmgi_rno_uniprot.RData")
+pmgi_rno_uniprot <- get(pmgi)
+devtools::use_data(pmgi_rno_uniprot, pkg = ".")
+rm(pmgi_rno_uniprot, pmgi)
+
+pmgi <- load("private/pathways/pseudo/pmgi_rno_GO.RData")
+pmgi_rno_GO <- get(pmgi)
+devtools::use_data(pmgi_rno_GO, pkg = ".")
+rm(pmgi_rno_GO, pmgi)
+
+# MMU
+pmgi <- load("private/pathways/pseudo/pmgi_mmu_genes.RData")
+pmgi_mmu_genes <- get(pmgi)
+devtools::use_data(pmgi_mmu_genes, pkg = ".")
+rm(pmgi_mmu_genes, pmgi)
+
+pmgi <- load("private/pathways/pseudo/pmgi_mmu_uniprot.RData")
+pmgi_mmu_uniprot <- get(pmgi)
+devtools::use_data(pmgi_mmu_uniprot, pkg = ".")
+rm(pmgi_mmu_uniprot, pmgi)
+
+pmgi <- load("private/pathways/pseudo/pmgi_mmu_GO.RData")
+pmgi_mmu_GO <- get(pmgi)
+devtools::use_data(pmgi_mmu_GO, pkg = ".")
+rm(pmgi_mmu_GO, pmgi)
 
 
