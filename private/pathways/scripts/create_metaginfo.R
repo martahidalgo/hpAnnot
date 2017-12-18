@@ -1,3 +1,5 @@
+## marta.hidalgo@outlook.es
+## Create metaginfo objects 
 
 rm(list = ls())
 
