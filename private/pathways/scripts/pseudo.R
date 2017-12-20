@@ -64,12 +64,17 @@ get.pseudo.pathigraphs <- function(subgraphs, annots, verbose = TRUE){
 create.pathigraph.from.subgraphs <- function(selsub, path.name, path.id){
     
     # Color in red node including the gene, when necessary
-    if(any(sapply(selsub, function(g) path.name %in% V(g)$genesList)))
-        for(i in 1:length(selsub))
+    if(any(sapply(selsub, function(g) path.name %in% unlist(V(g)$genesList))))
+        for(i in 1:length(selsub)){
             V(selsub[[i]])$label.color[which(sapply(V(selsub[[i]])$genesList, 
                                                     function(gl){
                                                         path.name %in% gl
-                                                        }))] <- "red"
+                                                    }))] <- "#B36100"
+            V(selsub[[i]])$stroke.color[which(sapply(V(selsub[[i]])$genesList, 
+                                                     function(gl){
+                                                         path.name %in% gl
+                                                     }))] <- "#B36100"
+        }
     
     # overlapping between paths
     imat <- data.matrix(mat.or.vec(nr = length(selsub), nc = length(selsub)))
