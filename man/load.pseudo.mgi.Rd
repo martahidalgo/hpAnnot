@@ -8,6 +8,12 @@ load.pseudo.mgi(species, group.by)
 }
 \arguments{
 \item{species}{Species of the samples.}
+
+\item{group.by}{How to group the subpathways to be visualized. By default
+they are grouped by the pathway to which they belong. Available groupings
+include "uniprot", to group subpathways by their annotated Uniprot functions,
+"GO", to group subpathways by their annotated GO terms, and "genes", to group
+subpathways by the genes they include.}
 }
 \value{
 Pseudo graph information object
@@ -16,6 +22,6 @@ Pseudo graph information object
 Loads object with pseudo graph information
 }
 \examples{
-load.pseudo("hsa", "uniprot")
+load.pseudo.mgi("hsa", "uniprot")
 
 }

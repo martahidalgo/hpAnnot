@@ -89,9 +89,14 @@ load.mgi <- function(species){
 #' Loads object with pseudo graph information
 #'
 #' @param species Species of the samples.
+#' @param group.by How to group the subpathways to be visualized. By default
+#' they are grouped by the pathway to which they belong. Available groupings
+#' include "uniprot", to group subpathways by their annotated Uniprot functions,
+#' "GO", to group subpathways by their annotated GO terms, and "genes", to group
+#' subpathways by the genes they include.
 #'
 #' @examples
-#' load.pseudo("hsa", "uniprot")
+#' load.pseudo.mgi("hsa", "uniprot")
 #'
 #' @return Pseudo graph information object
 #'
