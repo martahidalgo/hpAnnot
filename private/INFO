@@ -7,8 +7,11 @@ Para rehacer todos los archivos habría que ejecutar en este orden:
 3.- Ejecutar annotations/prepare_annotations.R
 4.- Ejecutar parte ANNOTATIONS de pack_data_by_species.R
 
-5.- Ejecutar pathways/create_metaginfo.R
+5.- Ejecutar pathways/scripts/create_metaginfo.R
 6.- Ejecutar parte PATHWAYS de pack_data_by_species.R
 
 7.- Ejecutar annofuns/create_annofuns.R
 8.- Ejecutar parte ANNOFUNS de pack_data_by_species.R
+
+9.- Ejecutar pathways/scripts/create_pseudo_mgi.R
+10.- Ejecutar parte PSEUDO PATHWAYS de pack_data_by_species.R
