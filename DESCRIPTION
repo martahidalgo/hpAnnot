@@ -8,7 +8,7 @@ Authors@R: c(person("Marta R.", "Hidalgo", email = "marta.hidalgo@outlook.es", r
 	     person("Alicia", "Amadoz", email = "aamadoz@cipf.es", role = c("ctb")),
 	     person("Çankut", "Cubuk", email = "ccubuk@cipf.es", role = c("ctb")),
 	     person("Joaquin", "Dopazo", email = "jdopazo@cipf.es", role = c("ctb")))
-Author: Marta R. Hidalgo [aut, cre]
+Author: Marta R. Hidalgo 2[aut, cre]
 	José Carbonell-Caballero [ctb]
 	Francisco Salavert [ctb]
 	Çankut Cubuk [ctb]
