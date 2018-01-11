@@ -1,0 +1,30 @@
+---
+title: "hpAnnot Bioconductor Package"
+author: "Marta R. Hidalgo, Francisco Salavert, Alicia Amadoz, Çankut Cubuk, José Carbonell-Caballero, Joaquín Dopazo"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+hpAnnot is the annotation and data package of the HiPathia package.
+HiPathia is a method for the computation of signal transduction along
+signaling pathways. The method is based on an iterative algorithm which
+is able to compute the signal intensity passing through the nodes of a
+network by taking into account the level of expression of each gene and
+the intensity of the signal arriving to it.
+
+
+
+### Instalation 
+
+In order to install the hpAnnot package, type on your R console
+
+```{r, fig.show='hold', message=FALSE, warning=FALSE}
+## try http:// if https:// URLs are not supported 
+source("https://bioconductor.org/biocLite.R") 
+biocLite("hpAnnot")
+```
+
