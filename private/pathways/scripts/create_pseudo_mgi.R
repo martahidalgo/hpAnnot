@@ -5,8 +5,6 @@
 rm(list = ls())
 
 library(hipathia)
-library(hpAnnot)
-library(igraph)
 
 hipath <- getwd()
 source(paste0(hipath, "/private/pathways/scripts/pseudo.R"))
