@@ -1,2 +1,3 @@
 # hpAnnot
-Annotation package for hiPathia
+
+hpAnnot is the annotation and data package of the HiPathia package.
