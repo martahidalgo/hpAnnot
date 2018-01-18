@@ -1,7 +1,7 @@
 Package: hpAnnot
 Type: Package
 Title: Anotation package for Hipathia package
-Version: 0.99.0
+Version: 0.99.1
 Authors@R: c(person("Marta R.", "Hidalgo", email = "marta.hidalgo@outlook.es", role = c("aut", "cre")),
 	     person("José", "Carbonell-Caballero", email = "jcarbonell.work@gmail.com", role = c("ctb")),
 	     person("Francisco", "Salavert", email = "fsalavert@cipf.es", role = c("ctb")),
