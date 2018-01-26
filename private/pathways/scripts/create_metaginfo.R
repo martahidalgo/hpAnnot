@@ -14,7 +14,8 @@ hipath <- getwd()
 source(paste0(hipath, "/private/pathways/scripts/graphs.R"))
 source(paste0(hipath, "/private/pathways/scripts/KEGG_net.R"))
 source(paste0(hipath, "/private/pathways/scripts/layout.R"))
-source(paste0(hipath, "/R/load.R"))
+source(paste0(hipath, "/../hipathia/R/utils.R"))
+# source(paste0(hipath, "/R/load.R"))
 
 # Parameters
 species <- c("hsa", "rno", "mmu")
@@ -30,8 +31,8 @@ for(spe in species){
                                                         pattern="xml")))
 
     # Load annotations
-    dbannot <- load.annots("uniprot", spe)
-    entrez2hgnc <- load.entrez.hgnc(spe)
+    dbannot <- hipathia:::load.annots("uniprot", spe)
+    entrez2hgnc <- hipathia:::load.entrez.hgnc(spe)
 
 
     # Process KGML files

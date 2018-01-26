@@ -301,8 +301,9 @@ create.metaginfo.object <- function(fpgs, basal.value = 0.5){
                           dimnames=list(pathigraph.genes))
   meta.05 <- NULL
   meta.05$pathigraphs <- fpgs
-  results.05 <- hipathia(genes.vals.05, meta.05)
-  results.dec.05 <- hipathia(genes.vals.05, meta.05, decompose = TRUE)
+  results.05 <- hipathia(genes.vals.05, meta.05, test = FALSE)
+  results.dec.05 <- hipathia(genes.vals.05, meta.05, decompose = TRUE, 
+                             test = FALSE)
 
   # Create all.labelids table
   labelids <- sapply(fpgs, function(pg) cbind(pg$label.id,
@@ -310,6 +311,7 @@ create.metaginfo.object <- function(fpgs, basal.value = 0.5){
                                               path.name = pg$path.name))
   labelids <- do.call("rbind", labelids)
   rownames(labelids) <- labelids[,1]
+  labelids <- as.data.frame(labelids, strignsAsFactors = FALSE)
 
   # Create metaginfo object
   metaginfo <- NULL
