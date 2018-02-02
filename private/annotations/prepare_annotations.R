@@ -107,7 +107,7 @@ for(species in all_species){
     for(mc in main_cat){
         fn <- paste0(spe_path, "/uniprot_keywords_", species, "__",
                      gsub(" ", "_", tolower(mc)), ".annot")
-        write.table(uniprot_keywords[grep(mc,uniprot_keywords[,3]),],
+        write.table(uniprot_keywords[grep(mc, uniprot_keywords[,3]),],
                     file = fn,
                     row.names = FALSE,
                     col.names = FALSE,
@@ -194,10 +194,10 @@ for(species in all_species){
         return(go_net)
     }
 
-    gos_bp <- gos[go_namespace=="biological_process"]
+    gos_bp <- gos[go_namespace == "biological_process"]
     go_bp_frame <- get.go.frame(gos_bp)
     go_bp_net <- get.go.net(gos_bp)
-    dis <- shortest.paths(go_bp_net,v = "GO:0008150")[1,,drop=T]+1
+    dis <- shortest.paths(go_bp_net, v = "GO:0008150")[1,,drop = TRUE]+1
     go_bp_frame$level <- dis[match(rownames(go_bp_frame),names(dis))]
 
 
@@ -209,7 +209,7 @@ for(species in all_species){
                                 comment.char = "!")
     go_bp_annots <- raw_go_annots[,c(3,5,7,9)]
     colnames(go_bp_annots) <- c("gene", "term", "evidence", "namespace")
-    go_bp_annots <- go_bp_annots[ go_bp_annots$namespace=="P", ]
+    go_bp_annots <- go_bp_annots[ go_bp_annots$namespace == "P", ]
 
     gbf_file <- paste0(spe_path, "go_bp_frame_", species, ".txt")
     write.table(go_bp_frame,
