@@ -21,14 +21,14 @@ for(spe in species){
 
 # ANNOTATIONS
 #------------------------
-load("private/annotations/go_bp_frame.RData")
+load("private/annotations/annotations/go_bp_frame.RData")
 save(go_bp_frame, file = paste0(edpath, "go_bp_frame.rda"), compress = "bzip2")
-load("private/annotations/go_bp_net.RData")
+load("private/annotations/annotations/go_bp_net.RData")
 save(go_bp_net, file = paste0(edpath, "go_bp_net.rda"), compress = "bzip2")
 
 # GO_bp_annots
 for(spe in species){
-    gba_folder <- paste0("private/annotations/", spe, "/")
+    gba_folder <- paste0("private/annotations/annotations/", spe, "/")
     gba_file <- paste0(gba_folder, "/go_bp_", spe, ".annot")
     go_bp_annot <- read.delim(gba_file,
                               sep = "\t",
@@ -44,7 +44,7 @@ for(spe in species){
 
 # Uni_bp_annots
 for(spe in species){
-    gba_folder <- paste0("private/annotations/", spe, "/")
+    gba_folder <- paste0("private/annotations/annotations/", spe, "/")
     uba_file <- paste0(gba_folder, "/uniprot_keywords_",
                        spe, "__biological_process.annot")
     uni_bp_annot <- read.delim(uba_file,
@@ -60,7 +60,7 @@ for(spe in species){
 
 # Entrez_HGNC
 for(spe in species){
-    eh_folder <- paste0("private/annotations/", spe, "/")
+    eh_folder <- paste0("private/annotations/annotations/", spe, "/")
     eh_file <- paste0(eh_folder, "/entrez_hgnc_", spe, ".annot")
     entrez_hgnc <- read.delim(eh_file,
                               sep = "\t",
@@ -75,7 +75,7 @@ for(spe in species){
 
 # PATHWAYS
 #------------------------
-# All together
+# All together in different files
 for(spe in species){
     path <- paste0("private/pathways/", spe, "/temp/meta_graph_info_",
                    spe, ".RData")

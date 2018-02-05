@@ -5,17 +5,24 @@
 # species <- "mmu"
 
 all_species <- c("hsa", "mmu", "rno")
+dir.create("private/annotations/annotations/")
 
 for(species in all_species){
 
     print(species)
 
-    ann_path <- paste0("private/annotations/annotations", species, "/")
-    raw_path <- paste0("private/annotations/raw_data/", species, "/")
+    ann_path <- "private/annotations/annotations/"
+    raw_path <- "private/annotations/raw_data/"
+    ann_spe_path <- paste0("private/annotations/annotations/", species, "/")
+    raw_spe_path <- paste0("private/annotations/raw_data/", species, "/")
+    if(!dir.exists(paste0("private/annotations/annotations/", species))){
+        dir.create(paste0("private/annotations/annotations/", species))
+    }
+
     
     ## hgnc to entrez
     if(species != "rno"){
-        rh_file <- paste0(raw_path, "/raw_entrez_hgnc_", species, ".txt")
+        rh_file <- paste0(raw_spe_path, "/raw_entrez_hgnc_", species, ".txt")
         raw_hgnc <- read.delim(rh_file,
                                sep = "\t",
                                header = TRUE,
@@ -27,7 +34,7 @@ for(species in all_species){
         clean_entrez_hgnc <- raw_hgnc[!is.na(raw_hgnc$EntrezGene.ID),]
         agn <- clean_entrez_hgnc$Associated.Gene.Name
         clean_entrez_hgnc <- clean_entrez_hgnc[!is.na(agn),]
-        eh_file <- paste0(ann_path, "/entrez_hgnc_", species, ".annot")
+        eh_file <- paste0(ann_spe_path, "/entrez_hgnc_", species, ".annot")
         write.table(clean_entrez_hgnc,
                     file = eh_file,
                     row.names = FALSE,
@@ -38,7 +45,7 @@ for(species in all_species){
     }
 
     ## uniprot keywords
-    ru_file <- paste0(raw_path, "uniprot_", species, "_keywords_noprime.annots")
+    ru_file <- paste0(raw_spe_path, "uniprot_", species, "_keywords_noprime.annots")
     raw_uniprot <- read.delim(ru_file,
                               sep="\t",
                               header = TRUE,
@@ -96,7 +103,7 @@ for(species in all_species){
                               as.character(
                                   keyonto$super.name[match(uniprot_keywords[,2],
                                                            keyonto$name)]))
-    uk_file <- paste0(ann_path, "/uniprot_keywords_", species, ".annot")
+    uk_file <- paste0(ann_spe_path, "/uniprot_keywords_", species, ".annot")
     write.table(uniprot_keywords,
                 file = uk_file,
                 row.names = FALSE,
@@ -106,7 +113,7 @@ for(species in all_species){
 
     main_cat <- keyonto[which(keyonto$parent=="root"),"name"]
     for(mc in main_cat){
-        fn <- paste0(ann_path, "/uniprot_keywords_", species, "__",
+        fn <- paste0(ann_spe_path, "/uniprot_keywords_", species, "__",
                      gsub(" ", "_", tolower(mc)), ".annot")
         write.table(uniprot_keywords[grep(mc, uniprot_keywords[,3]),],
                     file = fn,
@@ -202,7 +209,7 @@ for(species in all_species){
     go_bp_frame$level <- dis[match(rownames(go_bp_frame),names(dis))]
 
 
-    raw_go_file <- paste0(raw_path, "/gene_GO_association_", species, ".txt")
+    raw_go_file <- paste0(raw_spe_path, "/gene_GO_association_", species, ".txt")
     raw_go_annots <- read.delim(raw_go_file,
                                 sep = "\t",
                                 header = FALSE,
@@ -212,14 +219,14 @@ for(species in all_species){
     colnames(go_bp_annots) <- c("gene", "term", "evidence", "namespace")
     go_bp_annots <- go_bp_annots[ go_bp_annots$namespace == "P", ]
 
-    gbf_file <- paste0(ann_path, "go_bp_frame_", species, ".txt")
+    gbf_file <- paste0(ann_spe_path, "go_bp_frame_", species, ".txt")
     write.table(go_bp_frame,
                 file = gbf_file,
                 sep = "\t",
                 col.names = TRUE,
                 row.names = FALSE,
                 quote = FALSE)
-    gba_file <- paste0(ann_path, "go_bp_", species, "_annots.txt")
+    gba_file <- paste0(ann_spe_path, "go_bp_", species, "_annots.txt")
     write.table(go_bp_annots[,1:3],
                 file = gba_file,
                 sep = "\t",
@@ -234,7 +241,7 @@ for(species in all_species){
                                go_bp_annots$evidence == "IDA", ]
     namegos <- go_bp_frame[minigo[,2],2]
     goname <- as.data.frame(cbind(minigo$gene, namegos))
-    goname_file <- paste0(ann_path, "go_bp_", species, ".annot")
+    goname_file <- paste0(ann_spe_path, "go_bp_", species, ".annot")
     write.table(goname,
                 file = goname_file,
                 sep = "\t",

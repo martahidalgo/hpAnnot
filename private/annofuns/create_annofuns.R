@@ -9,8 +9,10 @@ species <- c("hsa", "mmu", "rno")
 for(spe in species){
 
     print(spe)
-    metaginfo <- load.mgi(spe)
-
+    mgi <- load(paste0("private/pathways/", spe, "/temp/meta_graph_info_", 
+                      spe, ".RData"))
+    metaginfo <- get(mgi)
+    
     # Uniprot
     annofuns <- hipathia:::annotate.paths(metaginfo, "uniprot")
     save(annofuns, file = paste0("private/annofuns/annofuns_uniprot_",
