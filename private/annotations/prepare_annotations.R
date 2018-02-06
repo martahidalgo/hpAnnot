@@ -21,29 +21,26 @@ for(species in all_species){
 
     
     ## hgnc to entrez
-    if(species != "rno"){
-        rh_file <- paste0(raw_spe_path, "/raw_entrez_hgnc_", species, ".txt")
-        raw_hgnc <- read.delim(rh_file,
-                               sep = "\t",
-                               header = TRUE,
-                               stringsAsFactors = FALSE)
-        if(species == "hsa"){
-            raw_hgnc <- raw_hgnc[,c("entrez","hgnc")]
-            colnames(raw_hgnc) <- c("EntrezGene.ID", "Associated.Gene.Name")
-        }
-        clean_entrez_hgnc <- raw_hgnc[!is.na(raw_hgnc$EntrezGene.ID),]
-        agn <- clean_entrez_hgnc$Associated.Gene.Name
-        clean_entrez_hgnc <- clean_entrez_hgnc[!is.na(agn),]
-        eh_file <- paste0(ann_spe_path, "/entrez_hgnc_", species, ".annot")
-        write.table(clean_entrez_hgnc,
-                    file = eh_file,
-                    row.names = FALSE,
-                    col.names = FALSE,
-                    sep = "\t",
-                    quote = FALSE)
-
+    rh_file <- paste0(raw_spe_path, "/raw_entrez_hgnc_", species, ".txt")
+    raw_hgnc <- read.delim(rh_file,
+                           sep = "\t",
+                           header = TRUE,
+                           stringsAsFactors = FALSE)
+    if(species == "hsa"){
+        raw_hgnc <- raw_hgnc[,c("entrez","hgnc")]
+        colnames(raw_hgnc) <- c("EntrezGene.ID", "Associated.Gene.Name")
     }
-
+    clean_entrez_hgnc <- raw_hgnc[!is.na(raw_hgnc$EntrezGene.ID),]
+    agn <- clean_entrez_hgnc$Associated.Gene.Name
+    clean_entrez_hgnc <- clean_entrez_hgnc[!is.na(agn),]
+    eh_file <- paste0(ann_spe_path, "/entrez_hgnc_", species, ".annot")
+    write.table(clean_entrez_hgnc,
+                file = eh_file,
+                row.names = FALSE,
+                col.names = FALSE,
+                sep = "\t",
+                quote = FALSE)
+    
     ## uniprot keywords
     ru_file <- paste0(raw_spe_path, "uniprot_", species, "_keywords_noprime.annots")
     raw_uniprot <- read.delim(ru_file,
