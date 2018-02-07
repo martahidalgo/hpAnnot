@@ -22,7 +22,7 @@ the intensity of the signal arriving to it.
 
 In order to install the hpAnnot package, type on your R console
 
-```{r, fig.show='hold', message=FALSE, warning=FALSE}
+```{r, fig.show='hold', message=FALSE, warning=FALSE, eval=FALSE}
 ## try http:// if https:// URLs are not supported 
 source("https://bioconductor.org/biocLite.R") 
 biocLite("hpAnnot")
