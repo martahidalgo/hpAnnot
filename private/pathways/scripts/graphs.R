@@ -292,7 +292,7 @@ amend.delete.node <- function(pathigraph, node.name){
 #              CREATE METAGINFO
 #_____________________________________________________
 
-create.metaginfo.object <- function(fpgs, basal.value = 0.5){
+create.metaginfo.object <- function(fpgs, species, basal.value = 0.5){
 
   pathigraph.genes <- all.needed.genes(fpgs)
 
@@ -311,15 +311,16 @@ create.metaginfo.object <- function(fpgs, basal.value = 0.5){
                                               path.name = pg$path.name))
   labelids <- do.call("rbind", labelids)
   rownames(labelids) <- labelids[,1]
-  labelids <- as.data.frame(labelids, strignsAsFactors = FALSE)
+  # labelids <- as.data.frame(labelids, strignsAsFactors = FALSE)
 
   # Create metaginfo object
   metaginfo <- NULL
-  metaginfo[["all.genes"]] <- pathigraph.genes
-  metaginfo[["path.norm"]] <- results.dec.05$all$path.vals[,1]
-  metaginfo[["eff.norm"]] <- results.05$all$path.vals[,1]
-  metaginfo[["pathigraphs"]] <- fpgs
-  metaginfo[["all.labelids"]] <- labelids
+  metaginfo$species <- species
+  metaginfo$all.genes <- pathigraph.genes
+  metaginfo$path.norm <- results.dec.05$all$path.vals[,1]
+  metaginfo$eff.norm <- results.05$all$path.vals[,1]
+  metaginfo$pathigraphs <- fpgs
+  metaginfo$all.labelids <- labelids
 
   return(metaginfo)
 }
