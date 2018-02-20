@@ -89,9 +89,9 @@ SourceUrl <- sapply(files, function(file){
     return(des)
 })
 
-SourceVersion <- ""
+SourceVersion <- NA_character_
 TaxonomyId <- NA_character_
-Coordinate_1_based <- TRUE
+Coordinate_1_based <- NA_character_
 
 DataProvider <- sapply(files, function(file){
     if(grepl("annofuns", file)){
