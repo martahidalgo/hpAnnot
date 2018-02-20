@@ -6,7 +6,7 @@
 ##
 
 
-setwd("appl/hpAnnot/inst/extdata/hpAnnot/v1/")
+setwd("~/appl/hpAnnot/inst/extdata/v1/")
 files <- list.files()
 
 for(file in files){

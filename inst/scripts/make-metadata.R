@@ -141,7 +141,7 @@ RDataClass <- sapply(files, function(file){
     return(des)
 })
 
-DispatchClass <- "list"
+DispatchClass <- "Rda"
 RDataPath <- paste0("hpAnnot/v1/", files)
 tags <- c("pathways", "HiPathia", "hpAnnot", "Signaling", "Annotation")
     
