@@ -1,9 +1,9 @@
 ---
-title: "hpAnnot Bioconductor Package"
+title: "hpAnnot"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-    %\VignetteIndexEntry{Vignette Title}
+    %\VignetteIndexEntry{hpAnnot}
     %\VignetteEngine{knitr::rmarkdown}
     %\VignetteEncoding{UTF-8}
     author:
@@ -33,6 +33,14 @@ is able to compute the signal intensity passing through the nodes of a
 network by taking into account the level of expression of each gene and
 the intensity of the signal arriving to it.
 
+\section{Usage}
 
+In order to access to the files stored in `r Biocpkg("AnnotationHub")`, type:
 
+```{r, fig.show='hold', message=FALSE, warning=FALSE}
+ah <- AnnotationHub()
+hp <- query(ah, "hpAnnot")
+hp
+```
 
+For further information on this please refer to `r Biocpkg("AnnotationHub")`.
