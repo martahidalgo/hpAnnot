@@ -1,0 +1,9 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+/hpAnnot.Rproj
+/private
+/inst/extdata/v1
+/inst/extdata/metadata_v1.csv
+/inst/extdata/test_file.txt
