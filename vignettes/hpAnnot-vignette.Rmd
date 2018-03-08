@@ -6,7 +6,7 @@ vignette: >
     %\VignetteIndexEntry{hpAnnot}
     %\VignetteEngine{knitr::rmarkdown}
     %\VignetteEncoding{UTF-8}
-    author:
+author:
 - name: Marta R. Hidalgo
   affiliation: Unidad de Bioinformática y Bioestadística, Centro de Investigación Príncipe Felipe (CIPF), Valencia, 46012, Spain
   email: marta.hidalgo@outlook.es
