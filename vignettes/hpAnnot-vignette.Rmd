@@ -1,7 +1,7 @@
 ---
 title: "hpAnnot"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: BiocStyle::pdf_document
 vignette: >
     %\VignetteIndexEntry{hpAnnot}
     %\VignetteEngine{knitr::rmarkdown}
@@ -23,21 +23,23 @@ author:
   - Clinical Bioinformatics Area, Fundación Progreso y Salud (FPS), Hospital Virgen del Rocio, Sevilla, 41013, Spain 
   - Functional Genomics Node (INB), FPS, Hospital Virgen del Rocio, Sevilla, 41013, Spain. 
   - Bioinformatics in Rare Diseases (BiER), Centro de Investigación Biomédica en Red de Enfermedades Raras (CIBERER), FPS, Hospital Virgen del Rocio, Sevilla, 41013, Spain
+abstract: >
+    _HpAnnot_ is the annotation and data package of the _hipathia_ package.
+    _Hipathia_ is a method for the computation of signal transduction along
+    signaling pathways. The method is based on an iterative algorithm which
+    is able to compute the signal intensity passing through the nodes of a
+    network by taking into account the level of expression of each gene and
+    the intensity of the signal arriving to it.
 
 ---
 
-_HpAnnot_ is the annotation and data package of the _hipathia_ package.
-_Hipathia_ is a method for the computation of signal transduction along
-signaling pathways. The method is based on an iterative algorithm which
-is able to compute the signal intensity passing through the nodes of a
-network by taking into account the level of expression of each gene and
-the intensity of the signal arriving to it.
 
 \section{Usage}
 
 In order to access to the files stored in `r Biocpkg("AnnotationHub")`, type:
 
 ```{r, fig.show='hold', message=FALSE, warning=FALSE}
+library(AnnotationHub)
 ah <- AnnotationHub()
 hp <- query(ah, "hpAnnot")
 hp
