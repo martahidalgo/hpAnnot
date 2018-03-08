@@ -1,0 +1,6 @@
+Information about new versions of hpAnnot
+
+0.99.6: Adding NEWS file
+	Removing man/ folder
+	Removing RDatas
+	Fixing some bugs in the vignette
