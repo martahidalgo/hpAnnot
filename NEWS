@@ -1,6 +1,8 @@
-Information about new versions of hpAnnot
+Version 0.99.6 (2018-02-20)
+  + Adding NEWS file
+  + Removing man/ folder
+  + Removing RDatas
+  + Fixing some bugs in the vignette
 
-0.99.6: Adding NEWS file
-	Removing man/ folder
-	Removing RDatas
-	Fixing some bugs in the vignette
+Version 0.99.8 (2018-04-08)
+  + Correcting Bioconductor style
