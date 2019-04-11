@@ -7,8 +7,9 @@
 
 
 
-setwd("appl/hpAnnot/inst/extdata/")
-files <- list.files("v1/")
+setwd("~/appl/hpAnnot/inst/extdata/")
+version <- "v2"
+files <- list.files(version)
 
 species <- sapply(files, function(file){
     if(grepl(pattern = "hsa", file)){
@@ -62,7 +63,7 @@ description <- sapply(files, function(file){
     return(des)
 })
 
-biocversion <- 3.7
+biocversion <- 3.9
 genome <- NA
 SourceType <- "RData"
 
@@ -142,7 +143,7 @@ RDataClass <- sapply(files, function(file){
 })
 
 DispatchClass <- "Rda"
-RDataPath <- paste0("hpAnnot/v1/", files)
+RDataPath <- paste0("hpAnnot/", version , "/", files)
 tags <- c("pathways", "HiPathia", "hpAnnot", "Signaling", "Annotation")
     
 
@@ -165,5 +166,5 @@ csv <- data.frame(Title = files,
                   ResourceName = files,
                   stringsAsFactors = FALSE)
 
-write.csv(csv, file = "metadata_v1.csv", row.names = FALSE)
-write.csv(csv, file = "metadata.csv", row.names = FALSE)
+write.csv(csv, file = paste0("metadata_", version, ".csv"), row.names = FALSE)
+# write.csv(csv, file = "metadata.csv", row.names = FALSE)

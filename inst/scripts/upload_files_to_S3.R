@@ -5,15 +5,24 @@
 ## Written by Marta R. Hidalgo
 ##
 
-
-setwd("~/appl/hpAnnot/inst/extdata/v1/")
+version <- "v2"
+setwd(paste0("~/appl/hpAnnot/inst/extdata/", version))
 files <- list.files()
 
+## FOR INDIVIDUAL FILES
 for(file in files){
     order <- paste0("aws --profile AnnotationContributor s3 cp ", 
                     file, 
-                    " s3://annotation-contributor/hpAnnot/v1/", 
+                    " s3://annotation-contributor/hpAnnot/", version, "/", 
                     file, 
                     " --acl public-read")
     system(order)
 }
+
+## FOR WHOLE VERSION FOLDER
+order <- paste0("aws --profile AnnotationContributor s3 cp ", 
+                version, 
+                " s3://annotation-contributor/hpAnnot/", 
+                version, 
+                " --recursive --acl public-read")
+system(order)
