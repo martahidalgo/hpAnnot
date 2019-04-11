@@ -5,7 +5,8 @@
 ## Written by Marta R. Hidalgo
 ##
 
-
+## LIBRARIES
+library(AnnotationHubData)
 
 setwd("~/appl/hpAnnot/inst/extdata/")
 version <- "v2"
@@ -168,3 +169,5 @@ csv <- data.frame(Title = files,
 
 write.csv(csv, file = paste0("metadata_", version, ".csv"), row.names = FALSE)
 # write.csv(csv, file = "metadata.csv", row.names = FALSE)
+
+makeAnnotationHubMetadata("~/appl/hpAnnot/")

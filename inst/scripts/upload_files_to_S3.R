@@ -6,10 +6,11 @@
 ##
 
 version <- "v2"
-setwd(paste0("~/appl/hpAnnot/inst/extdata/", version))
-files <- list.files()
+setwd("~/appl/hpAnnot/inst/extdata/")
 
 ## FOR INDIVIDUAL FILES
+setwd(version)
+files <- list.files()
 for(file in files){
     order <- paste0("aws --profile AnnotationContributor s3 cp ", 
                     file, 
