@@ -9,7 +9,7 @@
 library(AnnotationHubData)
 
 setwd("~/appl/hpAnnot/inst/extdata/")
-version <- "v2"
+version <- "v3"
 files <- list.files(version)
 
 species <- sapply(files, function(file){
@@ -44,7 +44,7 @@ description <- sapply(files, function(file){
     }else{
         des <- NA
     }
-    
+
     if(grepl("GO", file)){
         des <- paste(des, "GO terms")
     }else if(grepl("uniprot", file)){
@@ -52,7 +52,7 @@ description <- sapply(files, function(file){
     }else if(grepl("genes", file)){
         des <- paste(des, "genes")
     }
-    
+
     if(grepl("hsa", file)){
         des <- paste(des, "for HSA species")
     }else if(grepl("mmu", file)){
@@ -60,11 +60,11 @@ description <- sapply(files, function(file){
     }else if(grepl("rno", file)){
         des <- paste(des, "for RNO species")
     }
-    
+
     return(des)
 })
 
-biocversion <- 3.9
+biocversion <- 3.22
 genome <- NA
 SourceType <- "RData"
 
@@ -146,21 +146,21 @@ RDataClass <- sapply(files, function(file){
 DispatchClass <- "Rda"
 RDataPath <- paste0("hpAnnot/", version , "/", files)
 tags <- c("pathways", "HiPathia", "hpAnnot", "Signaling", "Annotation")
-    
 
-csv <- data.frame(Title = files, 
-                  Description = description, 
-                  BiocVersion = biocversion, 
-                  Genome = genome, 
-                  SourceType = SourceType, 
+
+csv <- data.frame(Title = files,
+                  Description = description,
+                  BiocVersion = biocversion,
+                  Genome = genome,
+                  SourceType = SourceType,
                   SourceUrl = SourceUrl,
-                  SourceVersion = SourceVersion, 
-                  Species = species, 
-                  TaxonomyId = TaxonomyId, 
-                  Coordinate_1_based = Coordinate_1_based, 
+                  SourceVersion = SourceVersion,
+                  Species = species,
+                  TaxonomyId = TaxonomyId,
+                  Coordinate_1_based = Coordinate_1_based,
                   DataProvider = DataProvider,
-                  Maintainer = Maintainer, 
-                  RDataClass = RDataClass, 
+                  Maintainer = Maintainer,
+                  RDataClass = RDataClass,
                   DispatchClass = DispatchClass,
                   RDataPath = RDataPath,
                   Tags = paste(tags, collapse = ", "),
