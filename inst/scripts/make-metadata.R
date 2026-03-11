@@ -144,7 +144,8 @@ RDataClass <- sapply(files, function(file){
 })
 
 DispatchClass <- "Rda"
-RDataPath <- paste0("hpAnnot/", version , "/", files)
+Location_Prefix <- "https://zenodo.org/"
+RDataPath <- paste0("records/18268423/files/", files)
 tags <- c("pathways", "HiPathia", "hpAnnot", "Signaling", "Annotation")
 
 
@@ -162,6 +163,7 @@ csv <- data.frame(Title = files,
                   Maintainer = Maintainer,
                   RDataClass = RDataClass,
                   DispatchClass = DispatchClass,
+                  Location_Prefix = Location_Prefix,
                   RDataPath = RDataPath,
                   Tags = paste(tags, collapse = ", "),
                   ResourceName = files,
